@@ -1,4 +1,4 @@
-# Todo list
+# Todo List
 > Simple example of REST API application written in PHP using Symfony & API Platform.
 
 ## User Story
@@ -7,7 +7,6 @@
 ## Todo
 - [x] Install a lightweight version of Symfony `$ symfony new todo-list`
 - [x] Install and configure API Platform
-- [ ] Setting a different project name, "todo" can be very overloaded
 - [ ] Create an application model
 - [ ] Add fixtures
 - [ ] Implement basic functionality (REST back-end)
