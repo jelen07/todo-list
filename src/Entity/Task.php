@@ -4,12 +4,29 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use App\Repository\TaskRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={"get", "post"},
+ *     itemOperations={"get", "put", "delete"},
+ *     shortName="todo",
+ *     normalizationContext={"groups"={"task:read"}},
+ *     denormalizationContext={"groups"={"task:write"}}
+ * )
+ * @ApiFilter(BooleanFilter::class, properties={"finished"})
+ * @ApiFilter(SearchFilter::class, properties={"title": "partial"})
+ * @ApiFilter(PropertyFilter::class)
  * @ORM\Entity(repositoryClass=TaskRepository::class)
  */
 class Task implements TaskInterface
@@ -20,6 +37,7 @@ class Task implements TaskInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"task:read"})
      */
     private $id;
 
@@ -27,11 +45,19 @@ class Task implements TaskInterface
      * Specific day.
      *
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"task:read", "task:write"})
      */
     private $day;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"task:read", "task:write"})
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     maxMessage="Describe task with 255 chars or less"
+     * )
      */
     private $title;
 
@@ -39,12 +65,14 @@ class Task implements TaskInterface
      * Is the task already finished?
      *
      * @ORM\Column(type="boolean")
+     * @Groups({"task:read", "task:write"})
      */
     private bool $finished = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tasks")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"task:read", "task:write"})
      */
     private $owner;
 
