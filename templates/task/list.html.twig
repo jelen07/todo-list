@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/task.css') }}">
+{% endblock %}
+
+{% block body %}
+        {% include '__header.html.twig' %}
+        <h1 class="h3 mb-3 font-weight-normal">What to do?</h1>
+{% endblock %}
