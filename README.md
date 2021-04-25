@@ -8,6 +8,7 @@
 - [x] Install a lightweight version of Symfony `$ symfony new todo-list`
 - [x] Install and configure API Platform
 - [x] Create an application model
+- [x] Set better error messages while authentication - do not expose info, that some user is registered or not
 - [ ] Use UUID instead of autoincrement
 - [ ] Add fixtures
 - [ ] Implement basic functionality (REST back-end)
@@ -24,5 +25,4 @@ List of changes, that should be done, but they're not implemented due to lack of
 - Entities mapping and other configuration should not be tied to the entities - replace annotations with XML definition
 - Set up CI&CD process via GitHub Actions
 - Implement security especially within API
-- Set better error messages while authentication - do not expose info, that some user is registered or not
 - ...
