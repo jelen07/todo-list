@@ -7,7 +7,8 @@
 ## Todo
 - [x] Install a lightweight version of Symfony `$ symfony new todo-list`
 - [x] Install and configure API Platform
-- [ ] Create an application model
+- [x] Create an application model
+- [ ] Use UUID instead of autoincrement
 - [ ] Add fixtures
 - [ ] Implement basic functionality (REST back-end)
 - [ ] Implement front-end (PHP x Vue.js)
@@ -20,5 +21,8 @@
 List of changes, that should be done, but they're not implemented due to lack of time. 
 - Add coding standard checker + fixer
 - Add static analysis tool
-- Entities mapping should not be tied to the entities - replace annotations with XML definition 
+- Entities mapping and other configuration should not be tied to the entities - replace annotations with XML definition
 - Set up CI&CD process via GitHub Actions
+- Implement security especially within API
+- Set better error messages while authentication - do not expose info, that some user is registered or not
+- ...
