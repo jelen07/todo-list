@@ -1,2 +1,2 @@
-'Invalid credentials.': 'Authentication failed. Given email and password does not match.'
-'Email could not be found.': 'Authentication failed. Given email and password does not match.'
+'Invalid credentials.': 'Given email and password does not match.'
+'Email could not be found.': 'Given email and password does not match.'

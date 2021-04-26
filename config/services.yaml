@@ -29,3 +29,15 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.guzzle.client:
+        class: GuzzleHttp\Client
+        arguments:
+            - base_uri: 'localhost:8000'
+            - timeout: '2.0'
+            - http_errors: true
+
+    App\Api\Task\ClientInterface:
+        class: App\Api\Task\Client
+        arguments:
+            - '@app.guzzle.client'

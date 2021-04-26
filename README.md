@@ -17,7 +17,25 @@
 - Composer
 - Docker and docker-compose
 
+### Manual Installation
+
+1. `$ git clone https://github.com/jelen07/todo-list.git`
+1. `$ cd todo-list`
+1. `$ composer install`
+1. `$ docker compose up -d`
+1. `$ bin/console doctrine:database:create --if-not-exists`
+1. `$ bin/console doctrine:migration:migrate --no-interaction`
+1. `$ bin/console doctrine:fixtures:load --no-interaction`
+1. Start web server via `$ symfony server` OR `$ php -S localhost:8000 -t public` 
+
+Log in via
+
+| User                | Password |
+| ------------------- | -------- |
+| jon.doe@example.com | asdasd   |
+
 ## Documentation
+Swagger documentation is available at `/api`.
 
 ## Considerations
 When creating a new application or a new feature, tons of questions should be answered.
@@ -49,12 +67,12 @@ Many things have pros and cons like everything else, so it's appropriate to find
 - [x] Set better error messages while authentication - do not expose info, that some user is registered or not
 - [ ] Use UUID instead of autoincrement
 - [ ] Update `createdAt` and `updatedAt` via `gedmo/doctrine-extensions`
-- [x] Implement basic functionality (REST back-end)
-- [ ] Implement front-end (PHP x Vue.js)
 - [x] Add fixtures
+- [x] Implement basic functionality (REST backend)
+- [x] Implement frontend (PHP ~~x Vue.js~~)
 - [ ] Write tests (consider using TDD)
 - [ ] Use Docker
-- [ ] Update README
+- [x] Update README
 - [ ] Go out
 
 ### Next
@@ -64,4 +82,8 @@ List of changes, that should be done, but they're not implemented due to lack of
 - Entities mapping and other configuration should not be tied to the entities - replace annotations with XML definition
 - Set up CI&CD process via GitHub Actions
 - Implement security especially within API
+- Styles and JavaScript files are loaded from external resources, so it won't work without internet connections, install them localy
+- Use factories instead of calling `new MyClass`
+- Authentication via token
+- Getting tasks of specific user
 - ...

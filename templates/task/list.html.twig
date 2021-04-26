@@ -8,6 +8,33 @@
 {% endblock %}
 
 {% block body %}
-        {% include '__header.html.twig' %}
-        <h1 class="h3 mb-3 font-weight-normal">What to do?</h1>
+    {% include 'task/header.html.twig' %}
+    <main class="container" style="max-width: 40rem;">
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h4 class="border-bottom pb-2 mb-0">What to do?</h4>
+            {% for task in tasks %}
+            <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
+
+                <p class="pb-3 mb-0 small lh-sm
+                        {% if task.finished %}
+                            text-decoration-line-through text-black-10
+                        {% endif %}"
+                    >
+                    <strong class="d-block text-gray-dark text-str">
+                        {{ task.title }}{% if task.title is empty %}untitled{% endif %}
+                    </strong>
+                </p>
+                {% if not task.finished %}
+                    <p>
+                        <a href="#not-implemented">Done</a>
+                    </p>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <small class="d-block text-center mt-3">
+                <a href="{{ path('app_tasks') }}">Update</a>
+            </small>
+        </div>
+    </main>
 {% endblock %}
