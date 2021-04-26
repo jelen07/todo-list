@@ -49,9 +49,9 @@ Many things have pros and cons like everything else, so it's appropriate to find
 - [x] Set better error messages while authentication - do not expose info, that some user is registered or not
 - [ ] Use UUID instead of autoincrement
 - [ ] Update `createdAt` and `updatedAt` via `gedmo/doctrine-extensions`
-- [ ] Add fixtures
 - [x] Implement basic functionality (REST back-end)
 - [ ] Implement front-end (PHP x Vue.js)
+- [x] Add fixtures
 - [ ] Write tests (consider using TDD)
 - [ ] Use Docker
 - [ ] Update README
