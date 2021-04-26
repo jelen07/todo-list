@@ -10,7 +10,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use App\Repository\TaskRepository;
+use DateTimeImmutable;
 use DateTimeInterface;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -59,7 +61,7 @@ class Task implements TaskInterface
      *     maxMessage="Describe task with 255 chars or less"
      * )
      */
-    private $title;
+    private string $title;
 
     /**
      * Is the task already finished?
@@ -74,8 +76,7 @@ class Task implements TaskInterface
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"task:read", "task:write"})
      */
-    private $owner;
-
+    private ?UserInterface $owner;
 
     /**
      * @throws Exception
@@ -83,6 +84,7 @@ class Task implements TaskInterface
     public function __construct(string $title)
     {
         $this->title = $title;
+        $this->day = new DateTimeImmutable('now', new DateTimeZone('UTC'));
         $this->setTimestampable();
     }
 
@@ -121,12 +123,12 @@ class Task implements TaskInterface
         $this->finished = $finished;
     }
 
-    public function getOwner(): ?User
+    public function getOwner(): ?UserInterface
     {
         return $this->owner;
     }
 
-    public function setOwner(?User $owner): void
+    public function setOwner(?UserInterface $owner): void
     {
         $this->owner = $owner;
     }
