@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -12,7 +14,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -27,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
-class User implements UserInterface
+class User implements SecurityUserInterface, UserInterface
 {
     /**
      * @ORM\Id
@@ -67,10 +69,11 @@ class User implements UserInterface
     /**
      * @throws Exception
      */
-    public function __construct(string $email, ?string $password = null)
+    public function __construct(string $email, ?string $password = null, array $roles = ['ROLE_USER'])
     {
         $this->email = $email;
         $this->password = $password;
+        $this->setRoles($roles);
         $this->tasks = new ArrayCollection();
     }
 
