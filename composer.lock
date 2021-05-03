@@ -1985,6 +1985,47 @@
             "time": "2021-03-21T16:25:00+00:00"
         },
         {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v191",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "2acb8a055fa96289645d4b77a68a6cd41d67767c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/2acb8a055fa96289645d4b77a68a6cd41d67767c",
+                "reference": "2acb8a055fa96289645d4b77a68a6cd41d67767c",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP and Apache2/Nginx as on Heroku",
+            "homepage": "https://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "nginx",
+                "php"
+            ],
+            "time": "2021-04-15T19:49:01+00:00"
+        },
+        {
             "name": "laminas/laminas-code",
             "version": "4.2.1",
             "source": {

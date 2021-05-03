@@ -20,6 +20,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.8",
         "guzzlehttp/guzzle": "^6.2",
+        "heroku/heroku-buildpack-php": "^191.0",
         "nelmio/cors-bundle": "^2.1",
         "nette/utils": "^3.2",
         "phpdocumentor/reflection-docblock": "^5.2",
