@@ -72,6 +72,7 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
+            "./heroku_postdeploy.sh",
             "@auto-scripts"
         ],
         "post-update-cmd": [
