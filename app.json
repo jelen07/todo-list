@@ -1,0 +1,17 @@
+{
+  "name": "jelen07/todo-list",
+  "description": "Simple example of REST API application written in PHP using Symfony & API Platform",
+  "repository": "https://github.com/jelen07/todo-list.git",
+  "logo": "https://www.flaticon.com/svg/vstatic/svg/1081/1081007.svg?token=exp=1620020279~hmac=0b7940e0cb08e0a35c915072cba4d839",
+  "keywords": ["php", "symfony", "framework", "rest", "api", "platform"],
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "env": {
+    "APP_ENV": "dev",
+    "HEROKU": "TRUE"
+  },
+  "scripts": {
+    "postdeploy": "./heroku_postdeploy.sh"
+  }
+}
